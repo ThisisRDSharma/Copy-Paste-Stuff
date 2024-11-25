@@ -1,9 +1,7 @@
 # Copy-Paste-Stuff
 
-need elaborated version of below givne paragraph:
+need elaborated version of below given paragraph:
 
-Acuant plays a critical role in verifying the identities of customers who have onboarded via the Digital Bank platform.
+Acuant model outcome support the Bank Secrecy Act (BSA) regulatory requirements on enhanced due diligence on new digital banking customer onboarding to authenticate customer identification.  
 
-As of March 31, 2024, the Digital Bank had successfully onboarded a total of 49,103 customers who opened active deposit accounts through the bank’s online platform. This means these customers completed the digital onboarding process, which likely included submitting identification documents for verification, with Acuant performing the ID scanning and validation.
-
-In addition to the number of customers, these digitally onboarded customers collectively manage an aggregate portfolio balance of $771,229,472. This large portfolio balance indicates a substantial amount of assets held within these accounts, reflecting not only the success of the digital onboarding process but also the trust and reliance customers place on the Digital Bank for their banking needs.
+This model designed to prevent new account fraud schemes such as synthetic identification fraud. Acuant develop the model to authenticate the provided identification document used for onboarding new customers via Optical Character Recognition (OCR).  The model escalated to BSA Office of Foreign Assets Controls (OFAC) group to review potential customers flagged with tapered customer identification.
