@@ -1,5 +1,11 @@
 # Copy-Paste-Stuff
 
+## its model output, need a bit descriptive !!
+
+The key output is the response that Acuant returns for both authentication and tampering detection scores/recommendations. Acuant returns authentication & tampering indicators/recommendations that can be used by the BSA team when reviewing an application. The results from the Acuant check are added to the Salesforce application case which is used by BSA to review and ultimately approve or reject applications based on their review. Acuant is also used in combination with iProov to compare the image of the selfie to the image on the ID.
+
+
+
 ## for overview, frame this information in a more presentable paragraph.
 
 Portfolios, Products, and/or Banking Transaction Channels the Quantitative Process Applies to: Instruction: Please list the portfolio names and dollar amount (e.g., total commitment amount, total balance amount, etc.) this quantitative process is applied to.
