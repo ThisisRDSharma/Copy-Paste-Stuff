@@ -1,15 +1,41 @@
 # Copy-Paste-Stuff
 
-need explainable version of below given paragraph:
+## for overview, frame this information in a more presentable paragraph.
 
-Output and Usage:
+Portfolios, Products, and/or Banking Transaction Channels the Quantitative Process Applies to: Instruction: Please list the portfolio names and dollar amount (e.g., total commitment amount, total balance amount, etc.) this quantitative process is applied to.
 
-The key output from Acuant consists of authentication and tampering detection scores or recommendations. These scores provide an assessment of the applicant’s ID, indicating whether it appears authentic or has been altered. The authentication score helps verify if the ID matches expected patterns for legitimate documents, while the tampering score checks if any alterations or modifications have been made to the ID.
+Acuant applies to customers who onboarded via the Digital Bank. As of 12/22/23 there were 49,565 customers with active accounts that were digitally onboarded, aggregate portfolio balance (deposit account) of $1,056,728,608.05.
 
-These results are used by the BSA (Bank Secrecy Act) team when reviewing a new account application. The authentication and tampering scores are integrated into the Salesforce application case. This allows the BSA team to track and assess each application, using the scores to make an informed decision on whether to approve or reject the application. 
+The dataset is currently comprised of over 53,000 Live, 63,000 Print, and 42,000 Screen images that include various image resolutions, capture techniques, visual pattern controls, cropping controls, and capture device-specific controls.
 
-In addition to Acuant’s checks, the system also works in combination with iProov, a biometric verification tool, which compares the applicant's selfie with the photo on the ID to ensure that the person applying matches the ID. This multi-step verification process ensures greater accuracy in confirming the applicant’s identity.
 
-Output Impact:
+## frame it as DATA SOURCES AND Discuss the relevance of the development data to the modeling objective.
 
-If Acuant detects any failures or issues with the authentication or tampering scores, the system immediately alerts the BSA team. This alert prompts the team to perform a manual review of the application to further investigate and confirm whether the application should be accepted or rejected.
+Newer Machine Learning security tests require large amounts of image data, and it takes significantly longer to tune these tests to be highly accurate in detection while keeping a low false-positive rate.
+
+## Judgemental Adjustments
+
+Describe and justify any judgmental overlays/overrides of statistically estimated input parameters. If any such adjustments are intended to be conservative, explain in what way they are conservative. Note: this section should not be used to detail any overlays/overrides to the model outputs (described in Section 3.3.11. Need for Model Overlays).
+
+## 3.3.2.1	In-sample Performance/Fit
+
+Note: 
+
+Provide testing of model performance / fit on the estimation and hold-out samples, including calculations of relative and absolute model errors for different population/product/portfolio risk segments and time periods. For some models, their fit can be evaluated using various additional statistical metrics and analytical techniques. This includes, for example: the K-S test, ROC curves (and AUC/Gini coefficient and similar measures of discriminatory power), lift charts, Precision/Recall, F1 score, risk profiling, etc.
+
+For vendor models, include the model owner’s assessment of the model performance/fit testing results provided by vendor (based on vendor’s data) and any associated risks. In addition, include testing results on the Company’s internal data (or explain why it is not feasible). 
+
+
+Use this section for the testing of model performance/fit on the data on which the model was estimated/trained.
+
+
+
+
+
+
+
+
+
+
+
+
