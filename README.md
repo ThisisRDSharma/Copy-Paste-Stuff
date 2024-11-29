@@ -68,6 +68,13 @@ Let me know if further refinements are needed!
 
 Newer Machine Learning security tests require large amounts of image data, and it takes significantly longer to tune these tests to be highly accurate in detection while keeping a low false-positive rate.
 
+###
+
+**DATA SOURCES AND RELEVANCE TO THE MODELING OBJECTIVE**  
+
+The development of newer machine learning-based security tests necessitates access to extensive image datasets. These datasets are crucial for training and fine-tuning models to achieve high accuracy in detecting fraudulent or tampered images while minimizing the rate of false positives. The relevance of this development data lies in its ability to support the modeling objective: creating robust, reliable, and efficient detection mechanisms. 
+
+Large volumes of image data enable the models to learn and generalize from a wide variety of patterns, scenarios, and anomalies. This diversity ensures the system can handle real-world complexities, such as varying image quality, lighting conditions, and capture techniques. Moreover, the iterative process of tuning the models with such comprehensive datasets is critical to balancing detection sensitivity with operational efficiency, ensuring security tests remain both accurate and practical for deployment.
 ## Judgemental Adjustments
 
 Describe and justify any judgmental overlays/overrides of statistically estimated input parameters. If any such adjustments are intended to be conservative, explain in what way they are conservative. Note: this section should not be used to detail any overlays/overrides to the model outputs (described in Section 3.3.11. Need for Model Overlays).
