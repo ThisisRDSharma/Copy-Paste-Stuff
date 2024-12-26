@@ -71,6 +71,11 @@ Thresholds in fraud detection models are set based on the desired balance betwee
 
 
 
+No, we are not making any changes in the Log as this document include production level changes for enhancement in functionality done so far. On other hand, MRM/Model document change log includes information on updates have been made based on findings shared by reviewer into the document.
+
+
+
+
 
 
 
