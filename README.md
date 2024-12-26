@@ -71,9 +71,13 @@ Thresholds in fraud detection models are set based on the desired balance betwee
 
 
 
-No, we are not making any changes in the Log as this document include production level changes for enhancement in functionality done so far. On other hand, MRM/Model document change log includes information on updates have been made based on findings shared by reviewer into the document.
+
+**Change log response:**
 
 
+old: No, we are not making any changes in the Log as this document include production level changes for enhancement in functionality done so far. On other hand, MRM/Model document change log includes information on updates have been made based on findings shared by reviewer into the document.
+
+Extended: We are not making any changes to the log at this stage. This particular document focuses on production-level changes that have been made so far, specifically related to enhancements in functionality that have already been implemented. These changes have been finalized and are part of the current operational system. In contrast, the MRM (Model Risk Management) or Model document change log contains detailed information about updates that have been made to the document itself. These updates are based on findings or feedback provided by reviewers, who have examined the document and shared their observations. As a result, changes to the MRM/Model document are made to incorporate these reviewer recommendations, ensuring the document reflects the most current and accurate information.
 
 
 
