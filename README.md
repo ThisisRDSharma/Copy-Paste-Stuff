@@ -69,6 +69,19 @@ In fraud detection, the threshold levels used in model validation depend on the 
 Thresholds in fraud detection models are set based on the desired balance between detecting fraud and minimizing customer inconvenience. Key metrics include precision, recall, F1 score, and AUC, but business-specific thresholds (like the cost of fraud vs. operational costs) are also highly relevant.
 
 
+**in case if is needed **
+
+Accuracy: Measures how often the model correctly identifies fraudulent vs. legitimate transactions. 
+Precision: The percentage of fraud alerts that are true positives (i.e., how many of the flagged transactions are genuinely fraudulent). 
+Recall: The percentage of actual fraudulent transactions that are correctly identified by the model. 
+F1 Score: The balance between precision and recall. 
+Area Under the Curve (AUC): Performance metric for binary classification models, evaluating the trade-off between true positives and false positives. 
+False Positive Rate (FPR): The rate at which legitimate transactions are incorrectly flagged as fraudulent. 
+False Negative Rate (FNR): The rate at which fraudulent transactions are missed by the model. 
+
+
+
+
 
 
 
