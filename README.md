@@ -1,103 +1,159 @@
-In fraud detection, the threshold levels used in model validation depend on the specific goals of the fraud detection system (e.g., minimizing false positives, maximizing fraud detection rate) and the business context (e.g., cost of fraud, customer experience). These thresholds are typically applied to scores or outputs from machine learning models, and they help decide whether a transaction, account, or action is classified as fraudulent or not. Here are the common threshold levels used in industry for fraud model validation:
+Validating a **fraud detection model for document authentication** requires industry-specific **metrics and thresholds** to ensure reliability. Below are key metrics and their industry-standard thresholds:
 
-### 1. **False Positive Rate (FPR) and False Negative Rate (FNR)**:
-   - **False Positive Rate (FPR)**: The proportion of non-fraudulent cases incorrectly labeled as fraud.
-   - **False Negative Rate (FNR)**: The proportion of fraudulent cases incorrectly labeled as non-fraud.
+---
 
-   In industry, there is usually a balance sought between these two rates. A typical threshold might be:
-   - **FPR**: < 5% (depending on business requirements, this could vary).
-   - **FNR**: Ideally, < 1% for high-accuracy fraud detection.
+## **1. Model Performance Metrics**
+These measure the effectiveness of fraud detection.
 
-   These thresholds are used to fine-tune fraud models and adjust decision thresholds to balance detection with minimizing disruption to legitimate customers.
+### **a. Accuracy**  
+\[
+Accuracy = \frac{TP + TN}{TP + TN + FP + FN}
+\]
+- **Use Case:** General performance indicator
+- **Industry Standard:** **>95%** (high accuracy expected in financial, healthcare, and identity verification sectors)
 
-### 2. **Precision and Recall**:
-   - **Precision** (Positive Predictive Value): The proportion of flagged fraudulent cases that are truly fraudulent.
-   - **Recall** (True Positive Rate): The proportion of actual fraudulent cases that are correctly identified by the model.
+### **b. Precision (Positive Predictive Value - PPV)**  
+\[
+Precision = \frac{TP}{TP + FP}
+\]
+- **Use Case:** Ensures flagged fraud cases are actually fraudulent  
+- **Industry Standard:** **>85%** (varies by risk tolerance)
 
-   In fraud detection, **precision** is often prioritized to avoid inconveniencing legitimate users. Common thresholds might be:
-   - **Precision**: > 90% (or > 95% for high-stakes environments like banking).
-   - **Recall**: > 80% to 90% for fraud models, but this depends on whether minimizing false negatives (missing fraudulent cases) is more important than minimizing false positives (incorrectly flagging legitimate transactions).
+### **c. Recall (True Positive Rate - TPR)**  
+\[
+Recall = \frac{TP}{TP + FN}
+\]
+- **Use Case:** Measures the ability to detect actual fraud  
+- **Industry Standard:** **>90%** in high-risk sectors (banking, government)  
 
-### 3. **Area Under the ROC Curve (AUC-ROC)**:
-   - **AUC-ROC** (Area Under the Receiver Operating Characteristic Curve) is a measure of a model’s ability to distinguish between classes (fraud vs. non-fraud).
-   - In practice, an AUC score of **0.80–0.90** is considered good for fraud detection models, while a score **above 0.90** is considered excellent.
+### **d. F1-Score (Harmonic Mean of Precision & Recall)**  
+\[
+F1 = 2 \times \frac{Precision \times Recall}{Precision + Recall}
+\]
+- **Use Case:** Balances precision and recall  
+- **Industry Standard:** **>88%**  
 
-   A threshold of **0.85 or higher** is often used as a benchmark for acceptable model performance.
+### **e. False Positive Rate (FPR)**
+\[
+FPR = \frac{FP}{FP + TN}
+\]
+- **Use Case:** Measures cases incorrectly flagged as fraud  
+- **Industry Standard:** **<5%** to reduce friction for legitimate users  
 
-### 4. **F1 Score**:
-   The **F1 Score** is the harmonic mean of precision and recall. A balance between these metrics is important when both false positives and false negatives are costly.
-   - **Threshold for F1 Score**: Industry benchmarks vary, but a score above **0.80** is often considered acceptable, depending on business goals.
+---
 
-### 5. **Confusion Matrix**:
-   The confusion matrix is used to assess the classification performance by comparing actual versus predicted fraud cases. Key metrics derived from the confusion matrix include:
-   - **True Positives (TP)**: Correctly identified fraud cases.
-   - **True Negatives (TN)**: Correctly identified non-fraud cases.
-   - **False Positives (FP)**: Legitimate cases incorrectly flagged as fraud.
-   - **False Negatives (FN)**: Fraudulent cases missed by the model.
-   
-   Common thresholds for evaluation:
-   - **Accuracy**: While not always the best metric for fraud detection, an accuracy of **> 90%** is generally acceptable in many fraud detection systems, but this depends on the class imbalance (fraud is often rare).
-   - **TP > 80%**: Identifying fraud cases is a key priority.
+## **2. Business Impact Metrics**
+These track real-world model effectiveness.
 
-### 6. **Cost-based Thresholds (Business Impact)**:
-   Many fraud detection models are fine-tuned with **business costs** in mind, meaning the thresholds are based on the expected **cost of fraud** and the **cost of false positives**.
-   - The **cost of fraud** can include financial losses and brand reputation damage.
-   - The **cost of false positives** includes operational costs, customer inconvenience, and customer churn.
-   
-   These thresholds depend on the risk appetite of the business and can vary significantly across industries (e.g., e-commerce, banking, insurance).
+### **a. Fraud Detection Rate (FDR)**
+\[
+FDR = \frac{Fraudulent Transactions Detected}{Total Fraudulent Transactions}
+\]
+- **Use Case:** How well fraud is caught  
+- **Industry Standard:** **>90%**  
 
-### 7. **Operational Thresholds**:
-   - **Transaction Limits**: For certain fraud detection systems, a threshold might be based on the monetary amount of a transaction. For example, transactions above **$1000** might be flagged for manual review, or for higher-risk regions, fraud detection models may use **dynamic thresholds** based on behavior or user risk profiles.
-   - **Risk Scores**: Many fraud detection models generate a "risk score," and a threshold (e.g., **0.7** or **70%)** might be set to flag a transaction as potentially fraudulent.
+### **b. False Acceptance Rate (FAR)**
+\[
+FAR = \frac{Impostors Accepted}{Total Impostor Attempts}
+\]
+- **Use Case:** Measures security risk of mistakenly accepting fraud  
+- **Industry Standard:** **<0.01%** for biometric and document authentication  
 
-### 8. **Time-based Thresholds**:
-   - Some systems set thresholds based on **time windows**, such as how quickly multiple transactions occur in a given period, e.g., flagging a user who makes 5 transactions in 5 minutes above a certain dollar amount.
-   
-### Example: Threshold Selection for a Fraud Model
-- **Precision**: 95%
-- **Recall**: 85%
-- **F1 Score**: 0.90
-- **AUC**: 0.88
-- **False Positive Rate**: <5%
-- **False Negative Rate**: <1%
+### **c. False Rejection Rate (FRR)**
+\[
+FRR = \frac{Legitimate Users Rejected}{Total Legitimate Authentication Attempts}
+\]
+- **Use Case:** Measures usability impact  
+- **Industry Standard:** **<5%**  
 
-**Application of thresholds**: 
-- If fraud detection is for a bank, the threshold might be set higher on **precision** to avoid flagging too many legitimate transactions, while being flexible on **recall** to ensure that most fraud is detected.
-- For an e-commerce platform, where customer inconvenience is more costly than missing a few fraudulent orders, the emphasis might be on higher **recall** to catch more fraud, even if it means some legitimate transactions are flagged for review.
+### **d. Fraud Loss Reduction**
+\[
+\text{Savings} = (\text{Expected Fraud Loss} - \text{Actual Fraud Loss})
+\]
+- **Use Case:** Direct business impact  
 
-### Conclusion
-Thresholds in fraud detection models are set based on the desired balance between detecting fraud and minimizing customer inconvenience. Key metrics include precision, recall, F1 score, and AUC, but business-specific thresholds (like the cost of fraud vs. operational costs) are also highly relevant.
+---
 
+## **3. Thresholds for Validation Parameters in Document Authentication**
+Key validation parameters for fraud detection models:
 
-**in case if is needed **
+| **Parameter**             | **Threshold** |
+|--------------------------|--------------|
+| **Document Tampering Detection** | **>98% accuracy** |
+| **Forgery Detection Rate** | **>95%** |
+| **AI-generated Fake Detection** | **>90%** |
+| **Template Matching Confidence** | **>85% similarity** |
+| **OCR Text Extraction Accuracy** | **>95%** |
+| **Biometric Face Match Confidence** | **>98%** |
+| **Liveness Detection Score** | **Above 0.9 (normalized 0-1 scale)** |
 
-Accuracy: Measures how often the model correctly identifies fraudulent vs. legitimate transactions. 
-Precision: The percentage of fraud alerts that are true positives (i.e., how many of the flagged transactions are genuinely fraudulent). 
-Recall: The percentage of actual fraudulent transactions that are correctly identified by the model. 
-F1 Score: The balance between precision and recall. 
-Area Under the Curve (AUC): Performance metric for binary classification models, evaluating the trade-off between true positives and false positives. 
-False Positive Rate (FPR): The rate at which legitimate transactions are incorrectly flagged as fraudulent. 
-False Negative Rate (FNR): The rate at which fraudulent transactions are missed by the model. 
+---
 
+## **4. Industry-Specific Standards**
+### **a. Banking & Finance**  
+- **AML (Anti-Money Laundering) compliance:** **FPR < 5%**
+- **KYC (Know Your Customer) standards:** **F1-score > 90%**
+- **Transaction authentication fraud detection:** **>95% precision**
 
+### **b. Healthcare**  
+- **Patient ID verification (HIPAA compliance):** **FRR < 2%**
+- **Medical record forgery detection:** **>95% accuracy**
 
+### **c. Government & Identity Verification**  
+- **ICAO (Passport Standards) & NIST guidelines:** **FAR < 0.01%**
+- **ID document validation:** **Template match > 85%**
 
-
-
-
-**Change log response:**
-
-
-old: No, we are not making any changes in the Log as this document include production level changes for enhancement in functionality done so far. On other hand, MRM/Model document change log includes information on updates have been made based on findings shared by reviewer into the document.
-
-Extended: We are not making any changes to the log at this stage. This particular document focuses on production-level changes that have been made so far, specifically related to enhancements in functionality that have already been implemented. These changes have been finalized and are part of the current operational system. In contrast, the MRM (Model Risk Management) or Model document change log contains detailed information about updates that have been made to the document itself. These updates are based on findings or feedback provided by reviewers, who have examined the document and shared their observations. As a result, changes to the MRM/Model document are made to incorporate these reviewer recommendations, ensuring the document reflects the most current and accurate information.
-
-
-
-
-
-
-
+---
 
 
+### **Validation Metrics & Thresholds for Document Authentication & Tampering Detection in Banking**  
+Below is a **model validation framework** specifically for **document authentication and tampering detection** in banking, categorized into three risk levels:  
 
+=�4� **Red Zone** – Unacceptable (High risk of fraud, must be flagged)  
+=�Ỡ� **Amber Zone** – Acceptable with suspicion (Requires further verification)  
+=�â� **Green Zone** – Acceptable (Meets security standards)  
+
+---
+
+## **1. Model Performance Metrics (Detection Accuracy)**
+| **Metric** | **Red Zone (=�4� Unacceptable)** | **Amber Zone (=�à� Acceptable with Suspicion)** | **Green Zone (=�â� Acceptable)** |
+|------------|----------------|-------------------------|----------------|
+| **Forgery Detection Accuracy** | **<85%** (High risk of undetected fraud) | **85-95%** (Requires manual review for high-value transactions) | **>95%** (Industry standard) |
+| **Tampering Detection Accuracy** | **<80%** (Easily bypassed by fraudsters) | **80-90%** (Needs secondary validation) | **>90%** (Strong fraud prevention) |
+| **OCR Extraction Accuracy** | **<85%** (Errors in reading document data) | **85-95%** (Requires human verification) | **>95%** (Reliable for auto-validation) |
+| **AI Deepfake Document Detection** | **<80%** (Fails to detect fake documents) | **80-90%** (Verify high-risk cases) | **>90%** (Secure against AI-generated fraud) |
+
+---
+
+## **2. Security & Fraud Risk Metrics**
+| **Metric** | **Red Zone (☽�4� Unacceptable)** | **Amber Zone (=�à� Acceptable with Suspicion)** | **Green Zone (=�㧢� Acceptable)** |
+|------------|----------------|-------------------------|----------------|
+| **False Positive Rate (FPR)** | **>10%** (Too many legit users flagged) | **5-10%** (Requires review process) | **<5%** (Efficient fraud detection) |
+| **False Negative Rate (FNR)** | **>15%** (Fraudulent documents go undetected) | **5-15%** (High-risk transactions must be flagged) | **<5%** (Secure fraud prevention) |
+| **Liveness Detection Score (Biometric Face Match with ID)** | **<0.7 (70%)** (Easily spoofed) | **0.7-0.9 (70-90%)** (Review high-risk cases) | **>0.9 (90%)** (Strong biometric validation) |
+
+---
+
+## **3. Document Verification Parameters**
+| **Validation Parameter** | **Red Zone (=�䌴� Unacceptable)** | **Amber Zone (䌽�无� Acceptable with Suspicion)** | **Green Zone (爽�⋢� Acceptable)** |
+|----------------------|-----------------|-------------------------|----------------|
+| **Template Matching Confidence (Document vs. Known Samples)** | **<80%** (Likely forged/tampered) | **80-90%** (Needs extra checks) | **>90%** (Strong match) |
+| **Watermark & Hologram Detection Accuracy** | **<75%** (High risk of fake documents) | **75-90%** (Requires manual review) | **>90%** (Trusted validation) |
+| **Signature Match Confidence** | **<70%** (Fraudulent signature likely) | **70-85%** (Needs additional checks) | **>85%** (Reliable match) |
+| **Metadata Consistency Check (EXIF, Digital Stamp, etc.)** | **<80%** (Likely forged digital document) | **80-90%** (Check manually) | **>90%** (Authentic digital record) |
+
+---
+
+## **4. Business Impact Metrics**
+| **Metric** | **Red Zone (=�4� Unacceptable)** | **Amber Zone (=�à� Acceptable with Suspicion)** | **Green Zone (=�â� Acceptable)** |
+|------------|----------------|-------------------------|----------------|
+| **Fraud Detection Rate (FDR)** | **<80%** (Fraud risk is too high) | **80-90%** (High-risk transactions need extra review) | **>90%** (Effective fraud prevention) |
+| **False Acceptance Rate (FAR)** | **>1%** (Too many impostors accepted) | **0.1-1%** (Monitor high-risk cases) | **<0.1%** (Secure validation) |
+| **False Rejection Rate (FRR)** | **>10%** (Legitimate users blocked frequently) | **5-10%** (Monitor customer complaints) | **<5%** (Customer-friendly validation) |
+
+---
+
+## **Conclusion**
+For a **banking document authentication system**, achieving **Green Zone (=�㧢� Acceptable)** levels across all parameters is crucial for fraud prevention.  
+- **Red Zone (=�4� Unacceptable)** thresholds must trigger immediate **fraud alerts and rejection**.  
+- **Amber Zone (=�à� Acceptable with Suspicion)** should prompt **manual verification and enhanced security checks** before approving transactions.  
