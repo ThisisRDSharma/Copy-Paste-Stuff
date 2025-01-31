@@ -68,3 +68,24 @@ We define the frequency of **monitoring, escalation, and intervention** based on
 Would you like to add any specific governance or audit checkpoints to this plan?
 
 Would you like me to refine this further based on specific fraud detection models (e.g., ML, rule-based, hybrid)?
+
+### **Updated RAG Status with Increased Frequency (Quarterly, Monthly, Bi-weekly)**
+
+This version increases the review frequency to **quarterly for Green**, **monthly for Amber**, and **bi-weekly for Red** to ensure effective monitoring and timely intervention.
+
+---
+
+| **RAG Status** | **FAR Threshold** | **FRR Threshold** | **Action Plan & Frequency** | **Escalation Level & Timeline** |
+|----------------|-------------------|-------------------|----------------------------|--------------------------------|
+| ✅ **Green**   | **≤ 10%**          | **≤ 7%**          | - Maintain settings, monitor KPIs. <br> - **Review quarterly** | - No escalation required. <br> - **Ongoing monitoring**. |
+| ⚠️ **Amber**  | **10% - 15%**      | **7% - 12%**      | - Notify fraud team, assess fraud-loss vs. user impact, fine-tune. <br> - **Review monthly** | - **Fraud Detection Team** escalation. <br> - **Resolve within 2 months**. |
+| 🔴 **Red**     | **> 15%**          | **> 12%**          | - Immediate root cause analysis, model retraining, add backup fraud detection. <br> - **Review bi-weekly** | - **Senior Management & Compliance** escalation. <br> - **Resolve within 1 month**. |
+
+---
+
+### **Key Frequency Adjustments:**
+- **Green Zone** → **Quarterly review** for efficient long-term oversight.
+- **Amber Zone** → **Monthly review** for more proactive monitoring and adjustments.
+- **Red Zone** → **Bi-weekly review** to ensure prompt action and model corrections.
+
+This setup strikes a balance between **efficient monitoring** and **timely interventions** based on the fraud model's status. Would you like further adjustments or details for a specific **fraud detection approach**?
