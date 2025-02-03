@@ -1,38 +1,20 @@
-### **Refined RAG Status with More Descriptive Escalation Plan and Adjusted Timelines**
-
-This version provides **more detailed descriptions** for each **escalation level**, with slightly **reduced timelines** for faster response and resolution.
+Here’s a more detailed **ROC Threshold RAG Classification with Monitoring Frequency & Escalation Plan** in a structured table format.  
 
 ---
 
-| **RAG Status** | **FAR Threshold** | **FRR Threshold** | **Action Plan & Frequency** | **Escalation Level & Timeline** |
-|----------------|-------------------|-------------------|----------------------------|--------------------------------|
-| ✅ **Green**   | **≤ 10%**          | **≤ 7%**          | - Maintain fraud detection settings. <br> - **Review quarterly** | **Escalation Level**: No escalation required. <br> **Timeline**: **Ongoing monitoring**. No immediate action needed unless performance deviates. |
-| ⚠️ **Amber**  | **10% - 15%**      | **7% - 12%**      | - Notify fraud team for analysis. <br> - Fine-tune detection thresholds and review fraud-loss vs. user friction. <br> - **Review monthly** | **Escalation Level**: **Fraud Detection Team**. <br> **Timeline**: Analyze within **2 weeks**, apply adjustments, and resolve within **1 month**. If unresolved in **1 month**, escalate to **senior management**. |
-| 🔴 **Red**     | **> 15%**          | **> 12%**          | - Immediate root cause analysis, assess model decay, investigate data quality. <br> - Retrain model and introduce additional fraud detection methods (e.g., manual reviews). <br> - **Review bi-weekly** | **Escalation Level**: **Senior Management & Compliance Team**. <br> **Timeline**: **Immediate action** required. Initial review within **3 days**. Full corrective actions should be completed within **2 weeks**. If unresolved, escalate to **executive leadership** with an action plan within **3 weeks**. |
+### **Fraud Model ROC Threshold, Frequency, and Escalation Plan**  
+
+| **RAG Status** | **ROC Threshold (AUC %)** | **Monitoring Frequency** | **Action Plan** | **Escalation Plan** |  
+|--------------|------------------------|------------------|--------------|----------------|  
+| ✅ **Green**   | **> 85%**  | **Quarterly** | - Continue monitoring model performance.  <br>- Track key fraud KPIs.  <br>- No intervention required unless declining trend observed. | - No escalation required. <br>- Regular model review by **Modelling Team** & **Fraud Risk Analysts**. |  
+| ⚠️ **Amber**   | **70% - 85%**  | **Monthly** | - Investigate feature drift and performance degradation. <br>- Conduct model recalibration with new data. <br>- Adjust fraud detection thresholds if necessary. <br>- Increase monitoring of false positives/negatives. | - **Level 1:** Notify **Modelling Team** and **Fraud Risk Manager**. <br>- **Level 2:** If performance remains in Amber for 2 consecutive months, escalate to **Head of Risk & Fraud Team**. <br>- **Level 3:** If performance drops toward 70% threshold, initiate **model retraining or replacement assessment**. |  
+| 🔴 **Red**   | **< 70%**  | **Bi-Weekly** | - Conduct immediate root cause analysis. <br>- Identify data drift, feature quality issues, or model deterioration. <br>- Implement emergency fraud detection measures (rule-based alerts, manual reviews). <br>- Start model retraining with latest data. | - **Level 1:** Immediate alert to **Modelling Team, Fraud Risk Manager & Compliance Team**. <br>- **Level 2:** If ROC remains <70% for **4 weeks**, escalate to **Head of Fraud & Senior Management**. <br>- **Level 3:** If no improvement in 8 weeks, **escalate to Regulatory & Compliance Authorities** (if required). <br>- **Final Step:** Deploy backup fraud models while retraining or replacing the underperforming model. |  
 
 ---
 
-### **Escalation Plan Details:**
+### **Key Takeaways:**
+- **Green Models** are reviewed quarterly with no escalation unless a negative trend is detected.  
+- **Amber Models** require **monthly** review, and if underperformance persists, escalation moves to **senior risk leaders**.  
+- **Red Models** are checked **bi-weekly**, with a rapid escalation plan involving senior management, compliance, and potential regulatory action.  
 
-- **Green Zone (No Escalation)**:
-   - **Escalation Level**: No escalation required, as the model performance is within acceptable limits.
-   - **Timeline**: Continuous monitoring with **quarterly review**. Action is only triggered if performance deviates significantly.
-
-- **Amber Zone (Fraud Detection Team)**:
-   - **Escalation Level**: The **Fraud Detection Team** is alerted for deeper investigation. The team reviews model thresholds, assesses fraud loss, and user impact, and fine-tunes parameters.
-   - **Timeline**: **2-week investigation** followed by adjustments. If the issue persists beyond **1 month**, escalate to **senior management** for deeper review and decision-making.
-
-- **Red Zone (Senior Management & Compliance Team)**:
-   - **Escalation Level**: Immediate investigation by **Senior Management** and the **Compliance Team** to address high fraud risk or high false rejections. Root cause analysis is performed along with model retraining and additional safeguards (e.g., manual review processes).
-   - **Timeline**: **Immediate action** is required. A preliminary review must be conducted within **3 days**. Corrective actions should be implemented and completed within **2 weeks**. If the problem remains unresolved, escalate to **executive leadership** for additional resources and a strategic action plan within **3 weeks**.
-
----
-
-### **Summary of Escalation Timelines:**
-- **Green**: No escalation needed, regular **quarterly reviews**.
-- **Amber**: **Review within 2 weeks**, corrective actions within **1 month**, escalate to **senior management** if unresolved.
-- **Red**: **Immediate action** within **3 days**, corrective actions within **2 weeks**, escalate to **executive leadership** if unresolved in **3 weeks**.
-
----
-
-This refined escalation plan provides clear steps with faster timelines, ensuring **timely interventions** while reducing the overall response time. Would you like to further adjust this plan for specific **fraud models** or **industry requirements**?
+Would you like to incorporate any specific KPIs or additional risk thresholds in the plan?
