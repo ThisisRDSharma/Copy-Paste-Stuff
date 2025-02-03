@@ -81,12 +81,31 @@ Let me know if you need further refinement or additional details!
 
 
 
+To monitor fraud models effectively using ROC (Receiver Operating Characteristic) and Accuracy, including FAR (False Acceptance Rate) and FRR (False Rejection Rate), the ideal frequency depends on a few factors, such as model complexity, data volatility, and the level of fraud risk. Here's a suggested approach:
 
+### 1. **ROC Curve Monitoring**:
+   - **Ideal Frequency**: **Quarterly to Monthly**
+   - **Reason**: The ROC curve helps assess the trade-off between True Positive Rate (TPR) and False Positive Rate (FPR). It's important to track the model’s overall performance over time. If fraud patterns change, you might want to review the ROC curve more often. Typically, quarterly monitoring is sufficient unless there's an increase in fraud activity or major data changes.
 
+### 2. **Accuracy Monitoring**:
+   - **Ideal Frequency**: **Monthly to Bi-Weekly**
+   - **Reason**: Accuracy can provide a quick overview of your model’s performance. Since this metric can be influenced by class imbalance or fraud pattern shifts, it’s good to check it frequently, at least on a monthly or bi-weekly basis, especially if there’s a risk of performance degradation.
 
+### 3. **FAR and FRR Monitoring**:
+   - **Ideal Frequency**: **Bi-Weekly to Monthly**
+   - **Reason**: FAR and FRR are critical metrics for fraud models, reflecting the balance between false positives (false alarms) and false negatives (missed fraud). If the cost of false positives is high, or if you're experiencing an increase in either FAR or FRR, it’s crucial to monitor these more frequently. Bi-weekly checks allow for rapid adjustments, but monthly reviews might suffice if the model is stable.
 
+### 4. **When to Adjust Frequency**:
+   - If the **fraud landscape changes** (e.g., new fraud tactics emerge), it’s advisable to increase the monitoring frequency.
+   - During model **re-training or recalibration**, you should monitor more intensively (e.g., weekly) until you are confident in the model's stability.
+   - **Seasonality**: Some models might require more frequent monitoring during certain times of year (e.g., holidays for retail fraud detection).
 
+In summary:
+- **ROC Curve**: Quarterly or Monthly
+- **Accuracy**: Monthly or Bi-Weekly
+- **FAR/FRR**: Bi-Weekly or Monthly
 
+Would you like more details on how to optimize or interpret these metrics?
 
 
 
@@ -118,62 +137,3 @@ Let me know if you need further refinement or additional details!
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Here’s a more descriptive escalation plan with a detailed course of action for the **Modelling Department**:
-
-### **Descriptive Escalation Plan for Modeling Department**
-
-| **Risk Level** | **Threshold for FAR** | **Threshold for FRR** | **Course of Action** | **Escalation Process** |
-|----------------|-----------------------|-----------------------|----------------------|------------------------|
-| **Green** (Low Risk) | FAR ≤ 10% | FRR ≤ 5% | 1. **Review the Model's Performance**: Regular validation and review of model accuracy. <br> 2. **Periodic Data Analysis**: Ensure the model is adjusting to the latest data trends. <br> 3. **Fine-Tuning**: Minor improvements, such as adjusting decision boundaries, if needed. | No immediate escalation needed. **Continuous monitoring** through regular checks by the modelling team. |
-| **Amber** (Moderate Risk) | 10% < FAR ≤ 15% | 5% < FRR ≤ 8% | 1. **Root Cause Analysis**: Detailed investigation of why FAR/FRR exceeded thresholds. <br> 2. **Model Recalibration**: Update model parameters or retrain the model using more recent or diverse datasets. <br> 3. **Threshold Adjustment**: Consider adjusting the thresholds for FAR/FRR based on ongoing trends. | **Escalate to Fraud Risk & Modelling Team**: Share findings and consider joint review meetings for model refinements. |
-| **Red** (High Risk) | FAR > 15% | FRR > 8% | 1. **Immediate Model Audit**: Conduct an urgent audit of the model to identify issues such as overfitting, underfitting, or drift. <br> 2. **Alternative Fraud Detection Measures**: Implement manual reviews, stricter rules, or supplementary checks (e.g., multi-factor authentication). <br> 3. **Model Re-Training**: Initiate retraining with new data, adjusting model architecture, or applying advanced algorithms. <br> 4. **Impact Assessment**: Review customer experience and fraud impact to determine how the breach may have affected operational efficiency. | **Escalate to Senior Management & Executive Team**: Report immediately for decision-making on escalated risk management protocols. Consider a full investigation across all affected systems. |
-
-This plan gives clarity on the actions needed and the escalation levels within the Modelling Department for each risk level, ensuring that any breach is addressed swiftly and effectively. Let me know if you'd like to make further adjustments!
