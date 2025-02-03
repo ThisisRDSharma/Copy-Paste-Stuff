@@ -21,6 +21,150 @@ Would you like to incorporate any specific KPIs or additional risk thresholds in
 
 
 
+Here's an updated and detailed explanation of FAR, FRR, along with the thresholds and action/escalation plan, considering your preference for more conservative thresholds and a FAR under 10% as green.
+
+### **Detailed Explanation of FAR & FRR**  
+
+1. **False Acceptance Rate (FAR)**  
+   - FAR is a measure of how often unauthorized transactions or users are incorrectly accepted by the fraud detection system.
+   - **High FAR** indicates a system that is too lenient, which increases the risk of fraudulent transactions.
+   - **Low FAR** implies a more robust model that catches fraud effectively but might impact the user experience.
+
+2. **False Rejection Rate (FRR)**  
+   - FRR is the rate at which legitimate transactions or users are incorrectly rejected by the system.
+   - **High FRR** means legitimate users are being unnecessarily blocked or frustrated, which impacts customer satisfaction.
+   - **Low FRR** ensures that valid users pass smoothly through the system but may increase fraud if the system becomes too lenient.
+
+### **Threshold Levels with Monitoring Frequency**  
+
+| **RAG Status** | **Threshold for FAR** | **Threshold for FRR** | **Monitoring Frequency** |
+|----------------|-----------------------|-----------------------|--------------------------|
+| **Green** (Low Risk)  | FAR ≤ 10%  | FRR ≤ 5%  | Quarterly – Routine review for model performance, reassessing thresholds and identifying patterns. |
+| **Amber** (Moderate Risk)  | 10% < FAR ≤ 15%  | 5% < FRR ≤ 8%  | Monthly – Closer monitoring of models for potential drift or irregularities, minor adjustments may be needed. |
+| **Red** (High Risk)  | FAR > 15%  | FRR > 8%  | Bi-weekly – Intensive monitoring for immediate adjustments and to determine root causes of any significant deviations. |
+
+---
+
+### **Action Plan & Escalation Process for FAR & FRR Breaches**  
+
+| **Threshold Breach Level** | **Course of Action (Modeling Department)** | **Escalation Process** |
+|--------------------------|----------------------------------------|------------------------|
+| **Green (FAR ≤ 10%, FRR ≤ 5%)**  | - Continue monitoring as per routine. - Ensure that the model is updated based on new data patterns. - Perform periodic checks for model drift and recalibration. | - No immediate escalation needed. - Ensure that fraud team is informed of any minor model tweaks. |
+| **Amber (10% < FAR ≤ 15%, 5% < FRR ≤ 8%)** | 1. Review model performance metrics. 2. Investigate potential data drifts, rule inefficiencies, or external factors contributing to changes. 3. Optimize model parameters or thresholds where necessary. 4. Run additional validation tests. | - Escalate to Fraud Management Team for further analysis of the impact. - Conduct a model review with the Data Science/Modeling Department for fine-tuning and adjustments. |
+| **Red (FAR > 15%, FRR > 8%)** | 1. Perform an immediate root-cause analysis. 2. Temporarily adjust thresholds to stricter settings (e.g., manual review or multi-factor authentication). 3. Evaluate external factors such as recent changes in transaction volume or fraud patterns. 4. Retrain the model using the latest data and adjust model features. | - Immediate escalation to Senior Management and Compliance Team. - Engage in high-priority meetings with key stakeholders to assess overall system performance, user experience impact, and compliance concerns. - Consider emergency deployment of additional fraud detection measures. |
+
+---
+
+### **Key Considerations for Escalation Plans:**  
+1. **Green Status (Routine)**: When the system is operating within thresholds, normal operation continues. If a minor discrepancy is noted, it is addressed in quarterly reviews.
+2. **Amber Status (Moderate Risk)**: Breaches here require more focused intervention. Actions such as model recalibration or rule adjustments should be done promptly. Escalations help identify any larger operational or strategic issues.
+3. **Red Status (High Risk)**: Severe breaches need immediate action. Stricter measures must be implemented quickly, followed by a detailed review of all aspects of the fraud detection model and system. Escalations should involve the highest level of management, ensuring the organization’s compliance and reputation are safeguarded.
+
+Let me know if you need further refinement or additional details!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Here’s a more descriptive escalation plan with a detailed course of action for the **Modelling Department**:
 
