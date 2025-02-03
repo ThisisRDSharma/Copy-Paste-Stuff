@@ -97,6 +97,10 @@ In summary:
 Would you like more details on how to optimize or interpret these metrics?
 
 
+An Action Plan in the context of fraud models refers to the set of predefined steps and measures that are taken when a fraud detection model detects suspicious activity. The purpose of the action plan is to ensure timely and effective responses to fraudulent incidents, minimizing losses and addressing vulnerabilities in the system.
+
+The Escalation Process refers to the steps taken when a fraud event or suspicious activity exceeds the scope of normal detection and requires higher-level intervention. The goal of the escalation process is to ensure that critical incidents are dealt with by the right people at the right time.
+
 
 
 
