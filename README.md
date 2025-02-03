@@ -18,3 +18,18 @@ Here’s a more detailed **ROC Threshold RAG Classification with Monitoring Freq
 - **Red Models** are checked **bi-weekly**, with a rapid escalation plan involving senior management, compliance, and potential regulatory action.  
 
 Would you like to incorporate any specific KPIs or additional risk thresholds in the plan?
+
+
+
+
+Here’s a more descriptive escalation plan with a detailed course of action for the **Modelling Department**:
+
+### **Descriptive Escalation Plan for Modeling Department**
+
+| **Risk Level** | **Threshold for FAR** | **Threshold for FRR** | **Course of Action** | **Escalation Process** |
+|----------------|-----------------------|-----------------------|----------------------|------------------------|
+| **Green** (Low Risk) | FAR ≤ 10% | FRR ≤ 5% | 1. **Review the Model's Performance**: Regular validation and review of model accuracy. <br> 2. **Periodic Data Analysis**: Ensure the model is adjusting to the latest data trends. <br> 3. **Fine-Tuning**: Minor improvements, such as adjusting decision boundaries, if needed. | No immediate escalation needed. **Continuous monitoring** through regular checks by the modelling team. |
+| **Amber** (Moderate Risk) | 10% < FAR ≤ 15% | 5% < FRR ≤ 8% | 1. **Root Cause Analysis**: Detailed investigation of why FAR/FRR exceeded thresholds. <br> 2. **Model Recalibration**: Update model parameters or retrain the model using more recent or diverse datasets. <br> 3. **Threshold Adjustment**: Consider adjusting the thresholds for FAR/FRR based on ongoing trends. | **Escalate to Fraud Risk & Modelling Team**: Share findings and consider joint review meetings for model refinements. |
+| **Red** (High Risk) | FAR > 15% | FRR > 8% | 1. **Immediate Model Audit**: Conduct an urgent audit of the model to identify issues such as overfitting, underfitting, or drift. <br> 2. **Alternative Fraud Detection Measures**: Implement manual reviews, stricter rules, or supplementary checks (e.g., multi-factor authentication). <br> 3. **Model Re-Training**: Initiate retraining with new data, adjusting model architecture, or applying advanced algorithms. <br> 4. **Impact Assessment**: Review customer experience and fraud impact to determine how the breach may have affected operational efficiency. | **Escalate to Senior Management & Executive Team**: Report immediately for decision-making on escalated risk management protocols. Consider a full investigation across all affected systems. |
+
+This plan gives clarity on the actions needed and the escalation levels within the Modelling Department for each risk level, ensuring that any breach is addressed swiftly and effectively. Let me know if you'd like to make further adjustments!
