@@ -1,84 +1,20 @@
-# **=�
-� RAG Status Framework for AFPR Monitoring**  
+The choice of a **quarterly review frequency** for **Account False Positive Ratio (AFPR)**, which is the ratio of false positives to true positives, is based on both **statistical stability** and **operational efficiency**. Below is the **technical rationale** behind this decision:  
 
-This framework defines the **Account False Positive Ratio (AFPR) thresholds**, the associated **monitoring actions**, and a **multi-level escalation process** to ensure timely intervention and mitigation of risks in credit and debit card fraud detection models.  
+### **1. Statistical Stability & Variance Control**
+- **AFPR fluctuates over short periods**: Since AFPR depends on the number of false positives and true positives, a **shorter monitoring window (e.g., monthly or bi-weekly)** may introduce **high variance** due to sudden shifts in fraud patterns, rule updates, or operational changes.  
+- **Quarterly aggregation smooths out noise**: By analyzing AFPR over a longer period, the impact of short-term anomalies is reduced, leading to a **more reliable trend analysis**.
 
----
+### **2. Sample Size & Data Sufficiency**
+- **Fraud cases are relatively rare events**: In cases where fraud volume is low, shorter time windows may not capture enough fraud instances, leading to an unreliable AFPR calculation.  
+- **Quarterly intervals ensure meaningful volume**: More data points in a quarter allow for a robust estimation of AFPR, reducing potential bias from low sample sizes.
 
-## **1️⃣ AFPR Thresholds & Interpretation**  
+### **3. Operational Impact & Investigation Load**
+- **High false positives = investigation fatigue**: Frequent monitoring (e.g., bi-weekly) might create unnecessary operational burden by triggering too many interventions without clear trends.  
+- **Quarterly review supports strategic tuning**: Instead of reacting to short-term fluctuations, fraud teams can **identify consistent patterns** and make more **impactful model adjustments**.
 
-| **Status**  | **AFPR Range** (False Positives per True Positive) | **Interpretation & Business Impact** |
-|------------|---------------------------------|----------------|
-| =�â� **Green**  | **AFPR ≤ 8**  | The model is effectively distinguishing between fraudulent and genuine accounts. False positive rates are within an acceptable range, ensuring minimal customer impact and strong fraud detection performance. |
-| =�à� **Amber**  | **8 < AFPR ≤ 15** | The model is flagging more false positives than ideal, leading to increased customer complaints, operational workload, and potential revenue loss due to customer attrition. Needs closer monitoring and assessment. |
-| =�4� **Red**  | **AFPR > 15**  | The false positive rate is excessively high, significantly impacting customer experience and operational efficiency. This could indicate model drift, ineffective fraud rules, or threshold misalignment. Immediate action is required. |
+### **4. Model Performance Trends & Adjustments**
+- **Fraud models take time to learn & adjust**: Sudden changes in AFPR may not always indicate actual model degradation but rather temporary shifts in fraud behavior.  
+- **Quarterly evaluation ensures meaningful insights**: Longer monitoring periods help in assessing the impact of previous model changes and whether recalibration is needed.
 
----
-
-## **2️⃣ Action Plan & Multi-Level Escalation Process**  
-
-This section outlines the **required response** for each AFPR status, with a structured **three-level escalation plan** to ensure accountability and timely resolution.  
-
-### **=�â� Green Status (AFPR ≤ 8) – Low Risk**  
-✅ **Action Plan:**  
-- Maintain standard fraud monitoring procedures.  
-- Conduct a **quarterly** review of AFPR trends.  
-- Ensure fraud detection performance aligns with business goals.  
-
-=�«� **Escalation:**  
-- No immediate escalation required.  
-- Regular reporting to fraud operations and risk management teams.  
-
----
-
-### **=�à� Amber Status (8 < AFPR ≤ 15) – Moderate Risk**  
-⚠️ **Action Plan:**  
-- Investigate the causes of increased false positives (e.g., rule-based thresholds, model drift, emerging fraud trends).  
-- Assess **customer complaints, operational impact, and chargeback trends**.  
-- Increase AFPR monitoring to **monthly** frequency.  
-- Fine-tune model parameters or fraud rules if needed.  
-
-=�Ì� **Escalation Plan (Level 1 & 2):**  
-- **Level 1:** Escalate to the **Fraud Strategy Team** for a detailed review and corrective action plan.  
-- **Level 2:** If AFPR remains **Amber for two consecutive months**, escalate to the **Fraud Risk Governance Committee** for intervention and additional risk assessment.  
-
----
-
-### **=�4� Red Status (AFPR > 15) – High Risk**  
-=�¨� **Action Plan:**  
-- **Immediate** investigation by fraud analytics and model governance teams.  
-- Conduct a **root cause analysis** to identify:  
-  - Model degradation or misclassification issues.  
-  - Overly aggressive fraud rule settings.  
-  - Emerging fraud patterns requiring new detection strategies.  
-- Implement urgent mitigations (e.g., manual review overrides, temporary rule adjustments).  
-- Increase monitoring frequency to **bi-weekly** until improvement is observed.  
-
-=�Ì� **Escalation Plan (Level 3 & 4):**  
-- **Level 3:** Immediate escalation to **Senior Risk Leadership & Fraud Operations Management** for strategic intervention.  
-- **Level 4:** If AFPR remains **Red for two consecutive review cycles**, escalate to the **Executive Risk Committee (ERC)** for executive-level oversight and potential model retraining or regulatory compliance review.  
-
----
-
-## **3️⃣ Summary of Escalation Levels**  
-
-| **Escalation Level** | **Triggered When** | **Responsible Team** | **Actions** |
-|----------------|------------------|----------------------|------------|
-| **Level 1** | AFPR enters Amber status | Fraud Strategy Team | Conduct analysis, suggest corrective actions |
-| **Level 2** | AFPR remains Amber for 2 months | Fraud Risk Governance Committee | Review model effectiveness, implement refinements |
-| **Level 3** | AFPR enters Red status | Senior Risk Leadership & Fraud Operations | Immediate corrective measures, manual interventions |
-| **Level 4** | AFPR remains Red for 2 cycles | Executive Risk Committee (ERC) | High-level strategic intervention, potential model retraining |
-
----
-
-### **Final Notes:**  
-- **Monitoring Frequency:**  
-  - **Green:** **Quarterly**  
-  - **Amber:** **Monthly**  
-  - **Red:** **Bi-weekly**  
-- **Multi-level Escalation ensures:**  
-  - **Proactive issue resolution** before AFPR becomes a business risk.  
-  - **Accountability at every level**, from operational teams to executive leadership.  
-  - **Alignment with regulatory and business requirements** for fraud detection performance.  
-
-Would you like any further refinements or additional e
+### **Conclusion**
+The quarterly frequency for AFPR is a **balance between statistical accuracy, operational feasibility, and meaningful trend analysis**. It ensures **stable evaluation** while avoiding overreactions to short-term volatility. However, if AFPR is observed to be deteriorating significantly, an **ad-hoc deep dive** or **monthly monitoring** might be warranted.
