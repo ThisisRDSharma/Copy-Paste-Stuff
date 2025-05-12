@@ -1,253 +1,83 @@
-Monitoring Plan for Acuant Fraud Detection System 
+Commentary on Thresholding Approach for Fraud Model Monitoring
+In monitoring the performance of our fraud detection model, one of the key metrics we evaluate is the monthly count of True Positives (TPR)—that is, the number of fraudulent transactions correctly identified by the model and confirmed as fraud through downstream disposition.
 
-Shape 
+🔹 Context and Metric Characteristics
+Across historical data, we observe that the number of TPRs per month ranges between 25 and 55.
 
-1. What is Acuant? 
+However, the denominator—total number of transactions per month—ranges between 85,000 and 95,000, with an average of ~88,000 and a standard deviation of ~3,000.
 
-Acuant is a third-party, cloud-based, black-box solution integrated within the bank’s digital onboarding platform, specifically for deposit product applicants. 
-It performs real-time document verification and tampering detection: 
+This results in a TPR rate of approximately 0.049%, a value so small that rate-based thresholds (e.g., percentage thresholds) become impractical and overly sensitive to minor fluctuations in volume.
 
-Document Authentication: 
-Validates official documents (Driver’s License, Passport, Birth Certificate, Digital Identity Token) uploaded by applicants. 
+🔹 Thresholding Methodology
+Given the above, we propose a volume-adjusted absolute thresholding framework for ongoing performance monitoring:
 
-Tampering Detection: 
+Volume Banding:
+We define the expected operational range of monthly transaction volume using ±1.5 standard deviations from the historical mean.
 
-Photo Tampering Detection: Checks if the photo section of a document has been fraudulently substituted (e.g., cut-paste manipulation). 
+Expected range: 85,000 to 91,000 transactions/month
 
-Physical Document Presence Detection: Ensures the ID shown is a real, physically-present document — not a screen capture or replayed video. 
+This band captures ~87% of the expected distribution under normal operating conditions.
 
-Text Tampering Detection: Detects whether textual fields like Name or Date of Birth have been altered on the document. 
+Absolute TPR Thresholds (Business-Driven):
+For months where the transaction count lies within the above volume band, we evaluate the model's TPR using absolute counts, not rates. This simplifies interpretation and avoids instability from very low base rate calculations.
 
-✅ The Acuant service is embedded into the digital onboarding flow. 
-✅ It is triggered automatically — the system sends applicant data to Acuant, and Acuant returns an instant decision (Accept / Reject) along with tampering flags. 
+Based on historical patterns and business input, we define the thresholds as:
 
-✅ Important: 
-We do not have access to Acuant’s internal model (proprietary logic). Monitoring must rely purely on input-output observations. 
+Green: ≤ 200 TPRs (within normal range)
 
-Shape 
+Amber: 201–400 TPRs (moderate increase, warrants attention)
 
-🔹 2. What We Intend to Do (Our Monitoring Strategy) 
+Red: > 400 TPRs (significant spike, investigate immediately)
 
-Since we cannot validate the model internally, the monitoring plan will focus on: 
+🔹 Justification for the Approach
+Practicality: Rate-based metrics are unreliable in this context due to the extremely low fraud base rate. An increase from 0.045% to 0.055% may appear statistically large, but in absolute terms, it could be driven by just a handful of cases.
 
-a) Operational Monitoring 
+Business-Driven, Not Arbitrary: While the thresholds are not derived from statistical confidence intervals, they are informed by a clear understanding of historical volumes, observed TPR ranges, and operational risk appetite.
 
-Was Acuant triggered for every applicant as expected? 
+Clarity for Stakeholders: Using absolute TPR counts offers a more intuitive and actionable monitoring framework, especially for business teams and operational reviewers.
 
-Was the Acuant API response successful (no technical failure)? 
 
-Was the response time acceptable? 
+## This is just a sample sheet nothing to do with actual numbers of EWB. Reason for sharing sheet is to check the formulas I have used such that you can use the same in EWB's environment. Please dont attempt to take this sheet in EWB. OPen in EWB to refer to the formula and replicate same formula and structure in your EWB sheet.
 
-b) Output Monitoring 
 
-What % of applicants are flagged for tampering (Photo, Text, Physical Presence)? 
+## Intentinally I have not written the write metric we are finding but just to illustrate
 
-Are there sudden spikes or drops in tampering rates (model drift or technical issue)? 
+Monitoring Approval/Decline Rates
+In monitoring the model's output over time, particularly approval and decline rates, it is critical that the thresholding approach is not only statistically sound but also balanced and interpretable across both metrics.
 
-c) Proxy Performance Monitoring 
+🔹 Limitations of Percentage Deviation Approach
+Using a percentage deviation from the baseline presents significant challenges due to the asymmetry in baseline proportions:
 
-How many applicants cleared by Acuant later turn out to be fraud? 
+Baseline approval rate: ~85%
 
-Are false negatives increasing? 
+Baseline decline rate: ~15%
 
-d) Input Data Quality Monitoring 
+Applying a ±25% deviation tolerance:
 
-Are the documents uploaded by applicants in good quality (clear, not blurred)? 
+Approval: ±25% of 85% → green zone range becomes 64% to 106%
 
-Are there failures during document upload? 
+Decline: ±25% of 15% → green zone becomes 11% to 19%
 
-e) Thresholds and Alerts 
+This results in:
 
-Set normal baseline ranges for each metric. 
+A disproportionately large acceptable range for approvals.
 
-Trigger Amber/Red alerts when thresholds are breached. 
+A narrow, highly sensitive band for declines.
 
-Shape 
+An overall imbalance, making the thresholds inconsistent and hard to interpret jointly.
 
-🔹 3. Data Points to Request from Data Warehouse 
+🔹 Rationale for Standard Deviation-Based Approach
+To address this imbalance, we propose using a standard deviation-based thresholding framework. This method:
 
-Column Name 
+Sets green/amber/red thresholds around the baseline based on actual distributional variability, not fixed percentages.
 
-Purpose 
+Applies the same statistical principle to both approval and decline rates.
 
-application_id 
+Ensures that the sum of approval and decline rates across thresholds logically adds up to 100%, maintaining interpretational consistency.
 
-Unique ID for each applicant 
+## Now this one is for model where we can only track success and declined transactions
 
-application_date 
+NOTE: See before 6:30 today, I am not asking to work on any new but to complete the thresholds basis the logic shared above and share the sheet before 6
 
-For daily/weekly volume tracking 
 
-product_type 
 
-Helps to segment monitoring if needed 
-
-acuant_api_triggered_flag 
-
-1 if Acuant was triggered for applicant 
-
-acuant_response_status 
-
-Success or Failure of Acuant response 
-
-acuant_response_time_sec 
-
-Time from request to response in seconds 
-
-acuant_final_decision 
-
-Accept / Reject decision by Acuant 
-
-photo_tampering_flag 
-
-1 if photo tampering detected 
-
-text_tampering_flag 
-
-1 if text tampering detected 
-
-physical_presence_flag 
-
-1 if physical document spoof detected 
-
-manual_review_required_flag 
-
-1 if applicant was manually reviewed post-Acuant 
-
-final_kyc_decision 
-
-Approved / Rejected by the bank (final onboarding decision) 
-
-document_upload_quality_flag 
-
-1 if document upload was blurry or unreadable 
-
-fraud_case_reported_flag 
-
-1 if applicant later found to be fraud 
-
-Shape 
-
-🔹 4. Monitoring Metrics and Calculations 
-
-Metric 
-
-Calculation 
-
-Industry Benchmark Example 
-
-Acuant Utilization Rate 
-
-Successful Acuant Responses / Applicants 
-
-> 98% 
-
-Average Response Time 
-
-Avg(acuant_response_time_sec) 
-
-< 2 seconds 
-
-Photo Tampering Rate 
-
-Sum(photo_tampering_flag) / Successful Applicants 
-
-~1% typical 
-
-Text Tampering Rate 
-
-Sum(text_tampering_flag) / Successful Applicants 
-
-~0.5% typical 
-
-Physical Presence Issue Rate 
-
-Sum(physical_presence_flag) / Successful Applicants 
-
-~0.2%–0.5% 
-
-Manual Review Escalation Rate 
-
-Sum(manual_review_required_flag) / Total Applicants 
-
-<2% 
-
-False Negative Proxy Rate 
-
-Fraud Cases Missed / Applicants Cleared by Acuant 
-
-<0.1% 
-
-Poor Document Upload Rate 
-
-Poor Uploads / Total Applicants 
-
-<1.5% 
-
-Shape 
-
-🔹 5. Example with Hypothetical Numbers 
-
-Suppose in 1 day: 
-
-10,000 applicants 
-
-9,950 successfully processed by Acuant 
-
-100 flagged for photo tampering 
-
-50 flagged for text tampering 
-
-25 flagged for physical presence issues 
-
-5 fraud cases later reported from applicants Acuant accepted 
-
-Metrics would be: 
-
-Acuant Utilization Rate = 9,950/10,000 = 99.5% ✅ 
-
-Photo Tampering Rate = 100/9,950 ≈ 1% ✅ 
-
-Text Tampering Rate = 50/9,950 ≈ 0.5% ✅ 
-
-Physical Presence Issue Rate = 25/9,950 ≈ 0.25% ✅ 
-
-False Negative Proxy Rate = 5/9,950 ≈ 0.05% ✅ 
-
-All numbers within healthy, expected bands. 
-
-Shape 
-
-🔹 6. Thresholds and Alert Logic 
-
-Metric 
-
-Trigger (Amber) 
-
-Trigger (Red) 
-
-Acuant Utilization Rate 
-
-< 97% for 1 day 
-
-< 95% 
-
-Photo Tampering Rate 
-
-Drop/spike by ±50% from baseline for 2 days 
-
-Drop/spike by ±70% 
-
-Response Time 
-
->3 seconds for 1 day 
-
->5 seconds 
-
-Document Upload Failures 
-
->2% for 2 consecutive days 
-
->3% 
-
- 
